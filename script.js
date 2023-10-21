@@ -2,13 +2,27 @@ let nextBtn = document.querySelector('.next')
 let prevBtn = document.querySelector('.prev')
 let elems = [...document.querySelectorAll('.elem')];
 let imgElems = [...document.querySelectorAll('.slider .imgElem')];
+let sliderInterval = setInterval(() => {
+    nextBtn.click();
+}, 3000);
 
+function nutrilizeSliderInterval() {
+    //clear interval
+    clearInterval(sliderInterval);
+    //redifine the interval
+    sliderInterval = setInterval(() => {
+        nextBtn.click();
+    }, 3000);
+}
 
 elems.forEach((elem) => {
-    let h1s = [...elem.querySelectorAll('h1')];
     let isAnimating = false;
+    let h1s = [...elem.querySelectorAll('h1')];
     let i = 0;
     nextBtn.addEventListener('click', () => {
+        //nutrilize the sliderInterval
+        nutrilizeSliderInterval()
+
         if (!isAnimating) {
             isAnimating = true;
             gsap.to(h1s[i], {
@@ -51,6 +65,8 @@ elems.forEach((elem) => {
 
 
     prevBtn.addEventListener('click', () => {
+        //nutrilize the sliderInterval
+        nutrilizeSliderInterval()
         if (!isAnimating) {
             isAnimating = true;
             gsap.to(h1s[i], {
@@ -93,7 +109,4 @@ elems.forEach((elem) => {
     })
 })
 
-setInterval(() => {
-    nextBtn.click();
-}, 3000);
 

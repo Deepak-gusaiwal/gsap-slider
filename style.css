@@ -1,0 +1,112 @@
+*,*::before,*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Courier New', Courier, monospace;
+}
+.heroSection{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    padding: 1rem;
+}
+.slider{
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    isolation: isolate;
+    position: relative;
+}
+.slider .imgElem{
+    width: 0%;
+    justify-self: flex-start;
+    /* max-width: max(65%,300px); */
+    max-height: 98%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    opacity: 0;
+    transform: translate(-50%,-50%) ;
+    transform-origin: left;
+    z-index: -1;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+.slider .imgElem:nth-child(1){
+    width: 100%;
+    left: 50%;
+    opacity: 1;
+}
+.slider .imgElem img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+   object-fit: cover;
+}
+.slider .elem{
+    height:max(8vw,3rem);
+    width: max(60%,300px);
+    position: relative;
+    overflow: hidden;
+}
+.slider .elem h1{
+    font-size: max(8vw,3rem);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    padding: 0 0.4rem;
+}
+.slider .elem h1:nth-child(1){
+    top:0;
+}
+.heroSection>span{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    border: 5px solid rgba(255, 255, 255, 0.444);
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 200ms ease;
+}
+.heroSection>span:hover{
+    box-shadow: 0px 4px 2px  rgba(0, 0, 0, 0.259);
+    width: 44px;
+}
+.heroSection .next{
+    right: 1rem;
+}
+.heroSection .prev{
+    left: 1rem;
+}
+@media (max-width:600px) {
+    .heroSection>span{
+        top: initial;
+        bottom: 20%;
+    }
+    
+}
